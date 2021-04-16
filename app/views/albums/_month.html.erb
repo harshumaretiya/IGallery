@@ -1,0 +1,26 @@
+<%= month_calendar(events: @albums, partial: "simple_calenda/month_calendar") do |date, albums| %>
+  <div class="card-group">
+  <% albums.each do |album| %>
+    <%- if album.user == current_user %>
+      
+        <div class="card" style="min-width: 366px;min-height: 180px;"  data-id="<%= album.id %>">
+          <%= image_tag album.image.url(:thumb) ,class: "card-img-top"%>
+          <div class="card-body">
+            <h5 class="card-title"><%= album.name %></h5>
+            <h5 class="card-title"><%= album.album_title %></h5>
+            <h5 class="card-title"><%= album.user.email %></h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+          <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+            <%= link_to 'Show', album, class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;" %>
+            <%= link_to 'Edit', edit_album_path(album), class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;" %>
+            <%= link_to 'Destroy', album, class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      
+    <%- end %>
+  <% end %>
+  </div>
+<% end %>

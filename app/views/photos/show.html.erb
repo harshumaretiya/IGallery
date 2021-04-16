@@ -1,0 +1,40 @@
+<div class= "row">
+  <div class="col-md-6">
+    <%= image_tag @photo.image.url(:large),class: "img-fluid" %>
+  </div>
+
+  <div class="mx-auto col-md-6" style="width: 200px;">
+    <p>
+      <strong>Photo name:</strong>
+      <%= @photo.photo_name %>
+    </p>
+
+    <p>
+      <strong>Photo title:</strong>
+      <%= @photo.photo_title %>
+    </p>
+
+    <% if @photo.tags.any? %>
+      <table class="table ">
+        <thead class="thead-dark">
+          <tr> <th scope="col">Tags</th></tr>
+        </thead>
+        <tbody>
+          <%  @photo.tags.each do |tag| %>
+            <tr>
+              <td> <%= tag.name %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% else %> 
+      <p><strong>Please add some tags to this photo</strong></p>
+    <% end %>
+
+    <%= link_to 'Back', album_photos_path ,class: "btn btn-primary btn-lg active" %>
+    <%= link_to 'Edit', edit_album_photo_path(@album, @photo),class: "btn btn-primary btn-lg active"  %>
+  </div>
+
+
+</div>

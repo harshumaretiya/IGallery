@@ -1,0 +1,47 @@
+<div class=" a1 signup-form ">
+
+<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h2>Sign Up</h2>
+<p class="hint-text">Create your account.It is free and only takes minute.</p>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+  
+<%= render "devise/shared/messages" %>
+  
+  <div class="form-group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name,class: "form-control",placeholder: "First Name",autofocus: true,autocomplete: "first_name" %>
+  </div>
+
+  <div class="form-group">
+        <%= f.label :last_Name %><br />
+        <%= f.text_field :last_name ,class: "form-control" ,placeholder: "Last Name",autofocus: true,autocomplete: "last_name" %>    
+  </div>
+  
+<div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control",placeholder: "Enter email" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password",class: "form-control",placeholder: "Enter password" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control",placeholder: "Enter confirm password" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Sign up",class: "btn btn-success btn-lg btn-block" %>
+  </div>
+  
+  <%= render "devise/shared/links" %>
+<% end %>
+</div>
+</div>

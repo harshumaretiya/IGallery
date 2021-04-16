@@ -1,0 +1,17 @@
+
+<%= image_tag @album.image.url(:large), class: "rounded float-left" %>
+<div class="float-right">
+<p>
+  <strong>Name:</strong>
+  <%= @album.name %>
+</p>
+
+<p>
+  <strong>Album title:</strong>
+  <%= @album.album_title %>
+</p>
+
+<div><%= link_to 'Add Images ', album_photos_path(@album),class: "btn btn-primary btn-lg active" %></div>
+<div><%= link_to 'Edit', edit_album_path(@album) %> </div>
+<div><%= link_to 'Back', albums_path %></div>
+</div>

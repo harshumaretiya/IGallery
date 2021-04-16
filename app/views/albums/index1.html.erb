@@ -1,0 +1,69 @@
+<h1>Albums</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Album Title</th>
+      <th scope="col">User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+      <%- if album.user == current_user %>
+      <td> <%= image_tag album.image.url(:thumb) ,class: "img-thumbnail"%></td>
+        <td><%= album.name %></td>
+        <td><%= album.album_title %></td>
+        <td><%= album.user.email %></td>
+        <td><%= link_to 'Show', album, class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;" %></td>
+        
+        <td><%= link_to 'Edit', edit_album_path(album), class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;" %></td>
+  
+  
+        <td><%= link_to 'Destroy', album, class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <%- end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @albums %> 
+<br>
+
+<%= link_to 'New Album', new_album_path %>
+===========================================================
+<h1>Albums</h1>
+<%= month_calendar(events: @albums) do |date, albums| %>
+  <%= date %>
+
+
+
+  
+    <% albums.each do |album| %>
+
+      <%- if album.user == current_user %>
+      <%= image_tag album.image.url(:thumb) ,class: "img-thumbnail"%>
+       <%= album.name %>
+       <%= album.album_title %>
+       <%= album.user.email %>
+       <%= link_to 'Show', album, class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;" %>
+        
+       <%= link_to 'Edit', edit_album_path(album), class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;" %>
+  
+  
+       <%= link_to 'Destroy', album, class:"btn btn-secondary" ,style: "color: blue;background-color: beige;font-size: inherit;", method: :delete, data: { confirm: 'Are you sure?' } %>
+        
+        <%- end %>
+     
+    <% end %>
+
+<% end %>
+<%= will_paginate @albums %> 
+<br>
+
+<%= link_to 'New Album', new_album_path %>

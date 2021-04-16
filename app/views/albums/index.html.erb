@@ -1,0 +1,12 @@
+<h1>Albums</h1>
+<div class="album_container">
+  <%= render 'month' %>
+ </div> 
+
+<br>
+<div class="load-more-container">
+        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+
+	<%= link_to "Load More", albums_path(start_date: params[:start_date]), class: "load-more" %>
+</div>
+<%= link_to 'New Album', new_album_path %>
